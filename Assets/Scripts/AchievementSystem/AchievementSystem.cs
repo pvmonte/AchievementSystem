@@ -11,7 +11,8 @@ public class AchievementSystem : MonoBehaviour , IObserver<Achievement>
     //[SerializeField] NotificationPosition _notificationPosition;
     string achievementsPath = "Achievements";
     [SerializeField] List<Achievement> _achievements;
-    public UnityEvent<INotificationData> onAchieve;
+    public delegate void AchievementSystemEvent(INotificationData notificationData);
+    public event AchievementSystemEvent onAchieve;
 
     private void Awake()
     {
@@ -47,6 +48,7 @@ public class AchievementSystem : MonoBehaviour , IObserver<Achievement>
 
     private Achievement FindAchievementByName(string name)
     {
+        print(_achievements.Find(a => a.Name.Equals(name)));
         return _achievements.Find(a => a.Name.Equals(name));
     }
 

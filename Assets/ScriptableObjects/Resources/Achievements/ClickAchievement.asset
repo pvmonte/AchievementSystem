@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9d13b9fed4b6ef60e89a5334cccd4a39, type: 3}
   m_Name: ClickAchievement
   m_EditorClassIdentifier: 
-  _name: 
+  _name: click
   _description: 
-  icon: {fileID: 0}
+  _icon: {fileID: 0}
   _goalCount: 0
   _currentCount: 0
   _achieved: 0

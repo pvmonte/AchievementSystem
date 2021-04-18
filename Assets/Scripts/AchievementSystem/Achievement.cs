@@ -7,13 +7,13 @@ public class Achievement : ScriptableObject , IObservable<Achievement> , INotifi
 {
     [SerializeField] protected string _name;
     [SerializeField, TextArea(3, 7)] protected string _description;
-    [SerializeField] private Sprite icon;
+    [SerializeField] private Sprite _icon;
     [SerializeField] protected int _goalCount;
     [SerializeField] protected int _currentCount;
     [SerializeField] protected bool _achieved;
     protected List<IObserver<Achievement>> _observers = new List<IObserver<Achievement>>();
     public string Name { get => _name; }
-    public Sprite Icon { get => icon; }
+    public Sprite Icon { get => _icon; }
 
     public void ProgressAndTryAchieve()
     {

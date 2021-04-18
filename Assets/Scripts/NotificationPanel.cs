@@ -9,7 +9,8 @@ public class NotificationPanel : BasePanel , IObserver<AchievementNotification>
     // Start is called before the first frame update
     void Start()
     {
-        AchievementSystem._instance.onAchieve.AddListener(ShowNotification);
+        print(AchievementSystem._instance);
+        AchievementSystem._instance.onAchieve += ShowNotification;
 
         for (int i = 0; i < 3; i++)
         {
