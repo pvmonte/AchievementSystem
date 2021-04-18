@@ -9,7 +9,7 @@ public class AchievementPanel : MonoBehaviour
     [SerializeField] AchievementPanelElement prefab;
     [SerializeField] RectTransform content;
 
-    Achievement[] achievements;
+    [SerializeField] List<AchievementPanelElement> panelElements = new List<AchievementPanelElement>();
 
     // Start is called before the first frame update
     void OnEnable()
@@ -19,7 +19,7 @@ public class AchievementPanel : MonoBehaviour
 
     private void PopulatePanel()
     {
-        achievements = GetAchievementsFromResources();
+        var achievements = GetAchievementsFromResources();
 
         foreach (var item in achievements)
         {
@@ -34,7 +34,18 @@ public class AchievementPanel : MonoBehaviour
 
     private void CretePanelElement(Achievement item)
     {
-        var element = Instantiate(prefab, content.transform);
+        var element = Instantiate(prefab, content.transform);        
         element.PopulateElementContent(item);
+        panelElements.Add(element);
+    }
+
+    private void OnDisable()
+    {
+        foreach (var item in panelElements)
+        {
+            Destroy(item.gameObject);
+        }
+
+        panelElements.Clear();
     }
 }

@@ -16,7 +16,7 @@ public class TestAchievement : MonoBehaviour
     {
         if(Input.GetKeyDown(KeyCode.A))
         {
-            AchievementSystem._instance.ProgressAchievementWithName("click");
+            AchievementSystem._instance.ProgressAchievementWithName("Click");
         }
     }
 }
