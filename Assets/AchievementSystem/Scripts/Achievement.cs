@@ -9,27 +9,30 @@ namespace UgglaGames.AchievementSystem
     public class Achievement : ScriptableObject, IObservable<Achievement>, INotificationData
     {
         [SerializeField] protected string _name;
-        [SerializeField, TextArea(3, 7)] protected string _description;
-        [SerializeField] private Sprite _icon;
-        [SerializeField] protected int _goalCount;
-        [SerializeField] protected int _currentCount;
+        [SerializeField, TextArea(1, 3)] protected string _description;
+        [SerializeField] protected Sprite _icon;
+        [SerializeField] protected int goalCount;
+        [SerializeField] protected int currentCount;
         [SerializeField] protected bool _achieved;
         protected List<IObserver<Achievement>> _observers = new List<IObserver<Achievement>>();
-        public string Name { get => _name; }
+        public string Name { get => _name; }        
         public Sprite Icon { get => _icon; }
+        public string Description { get => _description; }
+        public int GoalCount { get => goalCount; }
+        public int CurrentCount { get => currentCount; }
 
         public void ProgressAndTryAchieve()
         {
             if (_achieved)
                 return;
 
-            _currentCount++;
+            currentCount++;
             AchieveByCurrentCount();
         }
 
         void AchieveByCurrentCount()
         {
-            _achieved = _currentCount >= _goalCount;
+            _achieved = CurrentCount >= GoalCount;
             Notify();
         }
 
@@ -41,7 +44,7 @@ namespace UgglaGames.AchievementSystem
 
         public void Reset()
         {
-            _currentCount = 0;
+            currentCount = 0;
         }
 
         public IDisposable Subscribe(IObserver<Achievement> observer)
