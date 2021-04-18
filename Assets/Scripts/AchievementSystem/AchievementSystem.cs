@@ -11,8 +11,14 @@ public class AchievementSystem : MonoBehaviour , IObserver<Achievement>
     //[SerializeField] NotificationPosition _notificationPosition;
     string achievementsPath = "Achievements";
     [SerializeField] List<Achievement> _achievements;
-    public delegate void AchievementSystemEvent(INotificationData notificationData);
-    public event AchievementSystemEvent onAchieve;
+
+    public NotificationEvent OnAchieve;
+
+    [Serializable]
+    public class NotificationEvent : UnityEvent<INotificationData>
+    {
+
+    }
 
     private void Awake()
     {
@@ -42,13 +48,18 @@ public class AchievementSystem : MonoBehaviour , IObserver<Achievement>
     public void ProgressAchievementWithName(string name)
     {
         Achievement achievement = FindAchievementByName(name);
+
+        if (achievement.Equals(null))
+            return;
+
         achievement.ProgressAndTryAchieve();
-        Debug.Log($"Progressing achievement {name}");
     }
 
     private Achievement FindAchievementByName(string name)
     {
-        print(_achievements.Find(a => a.Name.Equals(name)));
+        if (string.IsNullOrEmpty(name))
+            return null;
+
         return _achievements.Find(a => a.Name.Equals(name));
     }
 
@@ -78,7 +89,7 @@ public class AchievementSystem : MonoBehaviour , IObserver<Achievement>
     public void OnNext(Achievement value)
     {
         INotificationData notification = (INotificationData)value;
-        onAchieve?.Invoke(notification);
+        OnAchieve?.Invoke(notification);
     }
 }
 
