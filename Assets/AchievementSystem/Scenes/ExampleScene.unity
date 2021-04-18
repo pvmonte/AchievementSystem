@@ -524,6 +524,56 @@ PrefabInstance:
       propertyPath: _achievements.Array.data[1]._goalCount
       value: 5
       objectReference: {fileID: 0}
+    - target: {fileID: 8208499875297785775, guid: a36f4a34a4afd7d288d2df132312bd92,
+        type: 3}
+      propertyPath: onEvent.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8208499875297785775, guid: a36f4a34a4afd7d288d2df132312bd92,
+        type: 3}
+      propertyPath: OnAchieve.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8208499875297785775, guid: a36f4a34a4afd7d288d2df132312bd92,
+        type: 3}
+      propertyPath: onEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8208499875297785775, guid: a36f4a34a4afd7d288d2df132312bd92,
+        type: 3}
+      propertyPath: OnAchieve.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8208499875297785775, guid: a36f4a34a4afd7d288d2df132312bd92,
+        type: 3}
+      propertyPath: onEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 8208499874410692853}
+    - target: {fileID: 8208499875297785775, guid: a36f4a34a4afd7d288d2df132312bd92,
+        type: 3}
+      propertyPath: OnAchieve.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 8208499874410692854}
+    - target: {fileID: 8208499875297785775, guid: a36f4a34a4afd7d288d2df132312bd92,
+        type: 3}
+      propertyPath: onEvent.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8208499875297785775, guid: a36f4a34a4afd7d288d2df132312bd92,
+        type: 3}
+      propertyPath: OnAchieve.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8208499875297785775, guid: a36f4a34a4afd7d288d2df132312bd92,
+        type: 3}
+      propertyPath: OnAchieve.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: ShowNotification
+      objectReference: {fileID: 0}
+    - target: {fileID: 8208499875297785775, guid: a36f4a34a4afd7d288d2df132312bd92,
+        type: 3}
+      propertyPath: OnAchieve.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     - target: {fileID: 8208499875675030455, guid: a36f4a34a4afd7d288d2df132312bd92,
         type: 3}
       propertyPath: m_UiScaleMode
