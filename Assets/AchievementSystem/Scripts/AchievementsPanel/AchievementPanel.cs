@@ -9,15 +9,17 @@ public class AchievementPanel : MonoBehaviour
     [SerializeField] AchievementPanelElement prefab;
     [SerializeField] RectTransform content;
 
+    Achievement[] achievements;
+
     // Start is called before the first frame update
-    void Start()
+    void OnEnable()
     {
         PopulatePanel();
     }
 
     private void PopulatePanel()
     {
-        var achievements = GetAchievementsFromResources();
+        achievements = GetAchievementsFromResources();
 
         foreach (var item in achievements)
         {
