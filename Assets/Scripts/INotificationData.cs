@@ -1,7 +1,10 @@
 ﻿using UnityEngine;
 
-public interface INotificationData
+namespace UgglaGames.Gerals
 {
-    string Name {get;}
-    Sprite Icon {get;}
+    public interface INotificationData
+    {
+        string Name { get; }
+        Sprite Icon { get; }
+    }
 }

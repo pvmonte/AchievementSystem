@@ -1,6 +1,7 @@
 using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
+using UgglaGames.Gerals;
 
 namespace UgglaGames.NotificationSystem
 {
