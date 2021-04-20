@@ -3,49 +3,65 @@ using System.Collections.Generic;
 using UnityEngine;
 using UgglaGames.AchievementSystem;
 
-public class AchievementPanel : MonoBehaviour
+namespace UgglaGames.NotificationSystem
 {
-    string achievementsPath = "Achievements";
-    [SerializeField] AchievementPanelElement prefab;
-    [SerializeField] RectTransform content;
-
-    [SerializeField] List<AchievementPanelElement> panelElements = new List<AchievementPanelElement>();
-
-    // Start is called before the first frame update
-    void OnEnable()
+    /// <summary>
+    /// Class of Panel used to show to player the achievements of game
+    /// </summary>
+    public class AchievementPanel : MonoBehaviour
     {
-        PopulatePanel();
-    }
+        string achievementsPath = "Achievements";
+        [SerializeField] AchievementPanelElement prefab;
+        [SerializeField] RectTransform content;
 
-    private void PopulatePanel()
-    {
-        var achievements = GetAchievementsFromResources();
+        [SerializeField] List<AchievementPanelElement> panelElements = new List<AchievementPanelElement>();
 
-        foreach (var item in achievements)
+        // Start is called before the first frame update
+        void OnEnable()
         {
-            CretePanelElement(item);
-        }
-    }
-
-    private Achievement[] GetAchievementsFromResources()
-    {
-        return Resources.LoadAll<Achievement>(achievementsPath);
-    }
-
-    private void CretePanelElement(Achievement item)
-    {
-        var element = Instantiate(prefab, content.transform);        
-        element.PopulateElementContent(item);
-        panelElements.Add(element);
-    }
-
-    private void OnDisable()
-    {
-        foreach (var item in panelElements)
-        {
-            Destroy(item.gameObject);
+            PopulatePanel();
         }
 
-        panelElements.Clear();
+        /// <summary>
+        /// Load Achievements from Resources folder, create UI elements for them and populate the panel
+        /// </summary>
+        private void PopulatePanel()
+        {
+            var achievements = Resources.LoadAll<Achievement>(achievementsPath);
+
+            foreach (var item in achievements)
+            {
+                CretePanelElementAndAddToList(item);
+            }
+        }
+
+        /// <summary>
+        /// Create UI element for the given achievement, then add to list
+        /// </summary>
+        /// <param name="item"></param>
+        private void CretePanelElementAndAddToList(Achievement item)
+        {
+            var element = Instantiate(prefab, content.transform);
+            element.PopulateElementContent(item);
+            panelElements.Add(element);
+        }
+
+        private void OnDisable()
+        {
+            ClearPanel();
+        }
+
+        /// <summary>
+        /// Destroy panel elements and clean the elements list
+        /// </summary>
+        private void ClearPanel()
+        {
+            foreach (var item in panelElements)
+            {
+                Destroy(item.gameObject);
+            }
+
+            panelElements.Clear();
+        }
     }
 }
